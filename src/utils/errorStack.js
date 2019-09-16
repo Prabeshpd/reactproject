@@ -1,0 +1,1 @@
+class ErrorStack extends Error {}

@@ -1,0 +1,53 @@
+import React from "react";
+
+class Button extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { buttonClass: null, buttonText: null };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange() {
+    let buttonClass = this.state.buttonClass === "active" ? "inactive" : "active";
+    this.setState({ ...this.state }, buttonClass);
+  }
+
+  render() {
+    let { buttonClass, buttonText } = this.props;
+    this.setState({ buttonClass, buttonText });
+    return (
+      <button className={this.state.buttonClass} onClick={this.handleChange}>
+        {this.state.buttonText}
+      </button>
+    );
+  }
+}
+
+class Paging extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { totalPages: null };
+    this.createPaginationBlock = this.createPaginationBlock.bind(this);
+  }
+
+  createPaginationBlock() {
+    let button = [];
+    let prevButton = <Button buttonClass="prev-button" buttonText="Previous" />;
+    let nextButton = <Button buttonClass="next-button" buttonText="Next" />;
+    button = [...prevButton, ...nextButton];
+    for (let i = 1; i <= this.state.totalPages; i++) {
+      button.push(<Button key={i} buttonClass="number" buttonText={i} />);
+    }
+    return button;
+  }
+
+  render() {
+    let { totalLength, pageLength } = this.props;
+    let totalPages = parseInt(parseInt(totalLength) / parseInt(pageLength) + 1);
+    this.setState({ totalPages });
+
+    return <div className="button-pagination">{this.createPaginationBlock()}</div>;
+  }
+}
+
+export default Paging;
