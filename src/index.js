@@ -1,9 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import ErrorBoundary from "./utils/error";
 
 class Welcome extends React.Component {
   render() {
-    return <h1>WELCOME</h1>;
+    return (
+      <ErrorBoundary>
+        <h1>Welcome</h1>
+      </ErrorBoundary>
+    );
   }
 }
 
