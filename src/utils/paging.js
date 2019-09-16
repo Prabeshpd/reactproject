@@ -9,12 +9,14 @@ class Button extends React.Component {
 
   handleChange() {
     let buttonClass = this.state.buttonClass === "active" ? "inactive" : "active";
-    this.setState({ ...this.state }, buttonClass);
+    let buttonText = this.props.buttonText;
+    this.setState({ ...this.state }, buttonClass, buttonText);
+    this.props.onPageChange(buttonText);
   }
 
   render() {
     let { buttonClass, buttonText } = this.props;
-    this.setState({ buttonClass, buttonText });
+    this.setState({ ...this.state }, buttonText, buttonClass);
     return (
       <button className={this.state.buttonClass} onClick={this.handleChange}>
         {this.state.buttonText}
@@ -36,7 +38,14 @@ class Paging extends React.Component {
     let nextButton = <Button buttonClass="next-button" buttonText="Next" />;
     button = [...prevButton, ...nextButton];
     for (let i = 1; i <= this.state.totalPages; i++) {
-      button.push(<Button key={i} buttonClass="number" buttonText={i} />);
+      button.push(
+        <Button
+          key={i}
+          buttonClass="number"
+          onPageChange={this.props.onPageChange}
+          buttonText={i}
+        />
+      );
     }
     return button;
   }
@@ -44,7 +53,7 @@ class Paging extends React.Component {
   render() {
     let { totalLength, pageLength } = this.props;
     let totalPages = parseInt(parseInt(totalLength) / parseInt(pageLength) + 1);
-    this.setState({ totalPages });
+    this.setState({ ...this.state }, totalPages);
 
     return <div className="button-pagination">{this.createPaginationBlock()}</div>;
   }

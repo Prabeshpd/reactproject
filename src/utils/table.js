@@ -1,24 +1,35 @@
 import React from "react";
-import Paging from "./paging";
 
 class TableContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { tableData: [], totalLength: null, pageLength: null, skip: null, page: null };
+    this.state = {
+      tableData: [],
+      totalLength: null,
+      fields: null,
+      pageLength: null,
+      skip: null,
+      page: null
+    };
   }
 
-  renderTable(data, i) {
-    return data.slice(this.state.skip, this.state.skip + this.state.pageLength).map(d => {
-      <td key={d + "_" + i}>{d}</td>;
-    });
+  renderTable(data, index) {
+    return Object.keys(data.slice(this.state.skip, this.state.skip + this.state.pageLength)).map(
+      (d, i) => {
+        for (let field of this.state.fields) {
+          if (d === field) return <td key={d + "_" + i}>{d}</td>;
+        }
+      }
+    );
   }
 
   getTableData() {
     const { fields, data, totalLength, pageLength, skip, page } = this.props;
-    this.setState({ totalLength, pageLength, skip, page });
     if (!fields) throw new Error("Must send required fields name");
-    let tableData = [];
     fields = fields.split(",");
+    this.setState({ ...this.state }, totalLength, pageLength, skip, page);
+    let tableData = [];
+
     for (let datum of data) {
       let keys = Object.keys(datum);
       let rowObject = {};
