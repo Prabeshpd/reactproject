@@ -17,7 +17,7 @@ class MedicineAdd extends React.Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    this.refs.frmAddTask.reset();
+    this.refs.frmAddMedicine.reset();
   }
 
   render() {
@@ -25,7 +25,7 @@ class MedicineAdd extends React.Component {
       <div className="container">
         <div className="header">Set Goal For Yourself</div>
         <div className="form-container">
-          <form className="form" ref="frmAddTask" onSubmit={this.handleFormSubmit}>
+          <form className="form" ref="frmAddMedicine" onSubmit={this.handleFormSubmit}>
             <label className="label">Name:</label>
             <input type="text" ref="name" onChange={this.handleChange} value={this.state.name} />
             <label className="label">Type:</label>
