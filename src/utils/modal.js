@@ -15,5 +15,7 @@ class Modal extends React.Component {
     this.props.formRef.reset();
   }
 
-  render() {}
+  render() {
+    return {};
+  }
 }
