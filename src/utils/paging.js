@@ -25,26 +25,6 @@ class Button extends React.Component {
   }
 }
 
-class Page extends Component {
-  state = {
-    text: ""
-  };
-
-  onChange = e => {
-    const value = e.target.value;
-    this.setState(state => {
-      if (this.state.text === state.text) {
-        return null;
-      }
-      return {
-        text: value
-      };
-    });
-  };
-  render() {
-    return <input onChange={this.onChange} />;
-  }
-}
 class Paging extends React.Component {
   constructor(props) {
     super(props);

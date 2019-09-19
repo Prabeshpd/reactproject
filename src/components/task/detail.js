@@ -32,11 +32,11 @@ class TaskDetail extends React.Component {
         <div className="form-container">
           <form className="form" ref="frmTaskUpdate" onSubmit={this.handleFormSubmit}>
             <label className="label">Name:</label>
-            <input type="text" ref="name" onChange={this.handleChange} value={this.state.name} />
+            <input type="text" name="name" onChange={this.handleChange} value={this.state.name} />
             <label className="label">Start Date:</label>
             <input
               type="date"
-              ref="startDate"
+              name="startDate"
               className="date"
               onChange={this.handleChange}
               value={this.state.startDate}
@@ -44,7 +44,7 @@ class TaskDetail extends React.Component {
             <label className="label">End Date:</label>
             <input
               type="date"
-              ref="endDate"
+              name="endDate"
               className="date"
               onChange={this.handleChange}
               value={this.state.endDate}

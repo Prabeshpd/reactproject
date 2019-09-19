@@ -30,14 +30,16 @@ class Login extends React.Component {
             <input
               type="text"
               ref="userName"
-              onChange={this.handleChange}
+              name="username"
+              onChange={this.onChange}
               value={this.state.username}
             />
             <label className="label">Password:</label>
             <input
               type="password"
               ref="password"
-              onChange={this.handleChange}
+              name="password"
+              onChange={this.onChange}
               value={this.state.password}
             />
             <button type="submit" className="submit"></button>

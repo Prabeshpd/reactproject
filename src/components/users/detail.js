@@ -33,23 +33,23 @@ class UserDetail extends React.Component {
         <div className="form-container">
           <form className="form" ref="frmUserUpdate" onSubmit={this.handleFormSubmit}>
             <label className="label">Name:</label>
-            <input type="text" ref="name" onChange={this.handleChange} value={this.state.name} />
+            <input type="text" name="name" onChange={this.handleChange} value={this.state.name} />
             <label className="label">Email:</label>
             <input
               type="text"
-              ref="email"
+              name="email"
               onChange={this.handleChange}
               value={this.state.startDate}
             />
             <label className="label">End Date:</label>
             <input
               type="date"
-              ref="phone"
+              name="phone"
               onChange={this.handleChange}
               value={this.state.endDate}
             />
             <label className="label">Roles</label>
-            <input type="text" ref="roles" onChange={this.handleChange} value={this.roles} />
+            <input type="text" name="roles" onChange={this.handleChange} value={this.roles} />
             <button type="submit" className="submit"></button>
           </form>
         </div>

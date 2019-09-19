@@ -27,10 +27,10 @@ class MedicineAdd extends React.Component {
         <div className="form-container">
           <form className="form" ref="frmAddMedicine" onSubmit={this.handleFormSubmit}>
             <label className="label">Name:</label>
-            <input type="text" ref="name" onChange={this.handleChange} value={this.state.name} />
+            <input type="text" name="name" onChange={this.handleChange} value={this.state.name} />
             <label className="label">Type:</label>
             <select
-              ref="type"
+              name="type"
               className="date"
               onChange={this.handleChange}
               value={this.state.type}
@@ -43,7 +43,7 @@ class MedicineAdd extends React.Component {
             <label className="label">InTake Time:</label>
             <input
               type="date"
-              ref="intake_time"
+              name="intake_time"
               className="date"
               onChange={this.handleChange}
               value={this.state.intakeTime}

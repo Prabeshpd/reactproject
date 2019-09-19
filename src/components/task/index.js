@@ -2,7 +2,7 @@ import React from "react";
 import TableContainer from "../../utils/table";
 import Paging from "../../utils/paging";
 
-class Table extends React.Component {
+class Task extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,4 +54,4 @@ class Table extends React.Component {
   }
 }
 
-export default Table;
+export default Task;

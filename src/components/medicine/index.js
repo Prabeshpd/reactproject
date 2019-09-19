@@ -24,7 +24,7 @@ class Table extends React.Component {
 
   render() {
     let { data, totalLength, skip, page } = this.props;
-    this.setState({ ...this.state }, data, totalLength, skip, page);
+    this.setState({ ...this.state }, { data, totalLength, skip, page });
     return (
       <div className="container">
         <div className="header">
